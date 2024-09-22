@@ -365,4 +365,34 @@ function outerFunction() {
   closureFunction(); // Output: 'I am from outer scope'
   
 
+
+// Define the feed function with a default food property
+function feed(animal, food) {
+    if (food) {
+        animal.eat(food); // If food is provided, use it
+    } else {
+        animal.eat(feed.defaultFood); // If no food is provided, use the default food
+    }
+}
+
+// Assigning default food property to the feed function
+feed.defaultFood = "Bread";
+
+// Example animal object
+const dog = {
+    eat: function(food) {
+        console.log(`The dog eats ${food}`);
+    }
+};
+
+// Call the feed function with and without the food argument
+feed(dog, "Meat");  // Output: The dog eats Meat
+feed(dog);          // Output: The dog eats Bread
+
+// Change the default food
+feed.defaultFood = "Fish";
+
+// Call the feed function again with the updated default food
+feed(dog);          // Output: The dog eats Fish
+
 */
